@@ -1,0 +1,6 @@
+{
+  "**/*": "prettier --write --ignore-unknown",
+  "*.{js,jsx}": "eslint",
+  "*.{css,js}": "stylelint",
+  "*.{png,jpeg,jpg,gif,svg}": "imagemin-lint-staged"
+}
