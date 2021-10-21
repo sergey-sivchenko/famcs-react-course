@@ -1,15 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import Todo from "./Todo/Todo";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Here is the very beginning of our TODOs application.
-        </p>
-      </header>
+      <Todo />
     </div>
   );
 }
