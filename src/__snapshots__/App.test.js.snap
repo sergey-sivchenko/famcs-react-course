@@ -1,20 +1,88 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  height: 50px;
+  width: 300px;
+}
+
+.c1 {
+  width: 24px;
+  height: 24px;
+  margin-right: 20px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+.c2 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
 <div
   class="App"
 >
-  <header
-    class="App-header"
+  <div
+    class="todo-container"
   >
-    <img
-      alt="logo"
-      class="App-logo"
-      src="logo.svg"
-    />
-    <p>
-      Here is the very beginning of our TODOs application.
-    </p>
-  </header>
+    <div
+      class="c0"
+    >
+      <img
+        alt="checkmark"
+        class="c1"
+        src="check-mark.png"
+      />
+      <div
+        class="c2"
+      >
+        Create static page
+      </div>
+    </div>
+    <div
+      class="c0"
+    >
+      <img
+        alt="checkmark"
+        class="c1"
+        src="close.png"
+      />
+      <div
+        class="c2"
+      >
+        Create dynamic page
+      </div>
+    </div>
+    <div
+      class="c0"
+    >
+      <img
+        alt="checkmark"
+        class="c1"
+        src="close.png"
+      />
+      <div
+        class="c2"
+      >
+        Add redux
+      </div>
+    </div>
+  </div>
 </div>
 `;
