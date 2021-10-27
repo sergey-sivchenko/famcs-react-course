@@ -1,13 +1,7 @@
-import "./App.css";
+import Main from "./pages/Main";
 
-import Todo from "./Todo/Todo";
-
-function App() {
-  return (
-    <div className="App">
-      <Todo />
-    </div>
-  );
-}
+const App = () => {
+  return <Main />;
+};
 
 export default App;
