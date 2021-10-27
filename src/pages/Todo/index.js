@@ -8,9 +8,9 @@ class Todo extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <TodoMessage message="Create static page" icon="checkmark" />
-        <TodoMessage message="Create dynamic page" icon="close" />
-        <TodoMessage message="Add redux" icon="close" />
+        <TodoMessage message="Create static page" initialChecked />
+        <TodoMessage message="Create dynamic page" initialChecked={false} />
+        <TodoMessage message="Add redux" initialChecked={false} />
       </div>
     );
   }

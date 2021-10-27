@@ -1,4 +1,4 @@
-import React from "react";
+import { Component } from "react";
 
 import CheckMarkIcon from "./img/check-mark.png";
 import CloseIcon from "./img/close.png";
@@ -8,19 +8,42 @@ function isLoading() {
   return false;
 }
 
-function TodoMessage(props) {
-  return (
-    <React.Fragment>
-      {isLoading() && <div>Loading...</div>}
-      {!isLoading() && (
-        <Container>
-          {props.icon === "checkmark" && <Icon src={CheckMarkIcon} alt="Check mark icon" />}
-          {props.icon === "close" && <Icon src={CloseIcon} alt="Close icon" />}
-          <Message>{props.message}</Message>
-        </Container>
-      )}
-    </React.Fragment>
-  );
+class TodoMessage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isChecked: props.initialChecked,
+    };
+  }
+
+  handleClick = (event) => {
+    console.log(event);
+    this.setState((state) => ({ isChecked: !state.isChecked }));
+  };
+
+  render() {
+    const { message } = this.props;
+    const { isChecked } = this.state;
+
+    console.log(isChecked);
+
+    return (
+      <>
+        {isLoading() && <div>Loading...</div>}
+        {!isLoading() && (
+          <Container onClick={this.handleClick}>
+            {isChecked ? (
+              <Icon src={CheckMarkIcon} alt="Check mark icon" />
+            ) : (
+              <Icon src={CloseIcon} alt="Close icon" />
+            )}
+            <Message>{message}</Message>
+          </Container>
+        )}
+      </>
+    );
+  }
 }
 
 export default TodoMessage;

@@ -7,6 +7,7 @@ export const Container = styled.div`
   height: 50px;
   justify-content: flex-start;
   width: 300px;
+  cursor: pointer;
 `;
 
 export const Icon = styled.img`
