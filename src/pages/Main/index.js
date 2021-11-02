@@ -1,12 +1,16 @@
+import Header from "components/Header";
 import Todo from "pages/Todo";
 
 import { Container } from "./styled";
 
 const Main = () => {
   return (
-    <Container>
-      <Todo />
-    </Container>
+    <>
+      <Header />
+      <Container>
+        <Todo />
+      </Container>
+    </>
   );
 };
 

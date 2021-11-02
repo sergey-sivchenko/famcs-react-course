@@ -1,19 +1,16 @@
-import { Component } from "react";
+import TodoItem from "./TodoItem";
 
-import styles from "./index.module.css";
+import { Container, SubTitle, Title } from "./styled";
 
-import TodoMessage from "./TodoMessage";
-
-class Todo extends Component {
-  render() {
-    return (
-      <div className={styles.container}>
-        <TodoMessage message="Create static page" initialChecked />
-        <TodoMessage message="Create dynamic page" initialChecked={false} />
-        <TodoMessage message="Add redux" initialChecked={false} />
-      </div>
-    );
-  }
-}
+const Todo = () => (
+  <Container>
+    <Title>My first TODO list</Title>
+    <SubTitle>Click the items to complete/incomplete them</SubTitle>
+    <TodoItem initialChecked={true} text="Create static page" />
+    <TodoItem initialChecked={false} text="Create dynamic page" />
+    <TodoItem initialChecked={false} text="Add redux" />
+    <TodoItem initialChecked={false} text="Prepare repository for colloquium" />
+  </Container>
+);
 
 export default Todo;
