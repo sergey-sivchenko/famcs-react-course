@@ -10,11 +10,18 @@ class TodoItem extends Component {
 
     this.state = {
       isChecked: props.initialChecked,
+      id: props.id,
     };
+
+    this.deleteTodo = props.deleteTodo;
   }
 
   handleClick = () => {
     this.setState((state) => ({ isChecked: !state.isChecked }));
+  };
+
+  onDeleteClick = () => {
+    this.deleteTodo(this.state.id);
   };
 
   render() {
@@ -29,6 +36,7 @@ class TodoItem extends Component {
           <CheckBoxOutlineBlank size={24} title="Unchecked" />
         )}
         <Text isChecked={isChecked}>{text}</Text>
+        <div onClick={this.onDeleteClick}>Delete</div>
       </Container>
     );
   }
