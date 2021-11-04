@@ -2,19 +2,29 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+
+  align-self: center;
 `;
 
 export const Input = styled.input`
-  height: 20px;
+  height: 25px;
   margin-right: 10px;
+
+  font-size: 18px;
+
+  border-radius: 5px;
 `;
 
 export const AddButton = styled.button`
-  height: 25px;
+  height: 30px;
   width: 50px;
 
-  padding: 5px;
+  border: 0;
+  border-radius: 5px;
+
+  padding: 0;
+
   cursor: pointer;
 
-  border: 1px solid white;
+  font-size: 18px;
 `;

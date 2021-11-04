@@ -18,10 +18,12 @@ class TodoForm extends Component {
   };
 
   onButtonClick = () => {
-    this.addTodo(this.state.text, false);
-    this.setState({
-      text: "",
-    });
+    if (this.state.text) {
+      this.addTodo(this.state.text, false);
+      this.setState({
+        text: "",
+      });
+    }
   };
 
   render() {
