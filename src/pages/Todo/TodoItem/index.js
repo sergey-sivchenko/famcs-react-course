@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { CheckBoxOutlineBlank } from "@styled-icons/material-outlined/CheckBoxOutlineBlank";
 import { CheckBox } from "@styled-icons/material-outlined/CheckBox";
+import { Close } from "@styled-icons/material-outlined/Close";
 
 import { Container, Text } from "./styled";
 
@@ -10,11 +11,18 @@ class TodoItem extends Component {
 
     this.state = {
       isChecked: props.initialChecked,
+      id: props.id,
     };
+
+    this.deleteTodo = props.deleteTodo;
   }
 
   handleClick = () => {
     this.setState((state) => ({ isChecked: !state.isChecked }));
+  };
+
+  onDeleteClick = () => {
+    this.deleteTodo(this.state.id);
   };
 
   render() {
@@ -29,6 +37,7 @@ class TodoItem extends Component {
           <CheckBoxOutlineBlank size={24} title="Unchecked" />
         )}
         <Text isChecked={isChecked}>{text}</Text>
+        <Close size={24} title="Remove" onClick={this.onDeleteClick} />
       </Container>
     );
   }
