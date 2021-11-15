@@ -1,39 +1,33 @@
-import { Component } from "react";
+import { useState } from "react";
 
-import { Container, Input, AddButton } from "./styled";
+import { addTodo } from "storage-requests/todos";
 
-class TodoForm extends Component {
-  constructor(props) {
-    super();
+import { AddButton, Container, Input } from "./styled";
 
-    this.state = {
-      text: "",
-    };
+const TodoForm = ({ isTodosLoading, requestTodos }) => {
+  const [text, setText] = useState("");
 
-    this.addTodo = props.addTodo;
-  }
-
-  onInputChange = (event) => {
-    this.setState((state) => ({ text: event.target.value }));
+  const handleInputChange = (event) => {
+    setText(event.target.value);
   };
 
-  onButtonClick = () => {
-    if (this.state.text) {
-      this.addTodo(this.state.text, false);
-      this.setState({
-        text: "",
-      });
+  const handleAddClick = async () => {
+    if (text) {
+      await addTodo(text);
+
+      requestTodos();
+      setText("");
     }
   };
 
-  render() {
-    return (
-      <Container>
-        <Input value={this.state.text} onChange={this.onInputChange}></Input>
-        <AddButton onClick={this.onButtonClick}>Add</AddButton>
-      </Container>
-    );
-  }
-}
+  return (
+    <Container>
+      <Input value={text} onChange={handleInputChange}></Input>
+      <AddButton disabled={!text || isTodosLoading} onClick={handleAddClick}>
+        Add
+      </AddButton>
+    </Container>
+  );
+};
 
 export default TodoForm;
