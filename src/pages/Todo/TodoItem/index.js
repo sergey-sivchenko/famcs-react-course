@@ -1,46 +1,36 @@
-import { Component } from "react";
 import { CheckBoxOutlineBlank } from "@styled-icons/material-outlined/CheckBoxOutlineBlank";
 import { CheckBox } from "@styled-icons/material-outlined/CheckBox";
 import { Close } from "@styled-icons/material-outlined/Close";
 
-import { Container, Text } from "./styled";
+import { removeTodo, updateTodo } from "storage-requests/todos";
+import { Container, Content, Text } from "./styled";
 
-class TodoItem extends Component {
-  constructor(props) {
-    super(props);
+const TodoItem = ({ id, isCompleted, requestTodos, text }) => {
+  const handleTodoClick = async () => {
+    await updateTodo({ id, isCompleted: !isCompleted, text });
 
-    this.state = {
-      isChecked: props.initialChecked,
-      id: props.id,
-    };
-
-    this.deleteTodo = props.deleteTodo;
-  }
-
-  handleClick = () => {
-    this.setState((state) => ({ isChecked: !state.isChecked }));
+    requestTodos();
   };
 
-  onDeleteClick = () => {
-    this.deleteTodo(this.state.id);
+  const handleRemoveClick = async () => {
+    await removeTodo(id);
+
+    requestTodos();
   };
 
-  render() {
-    const { text } = this.props;
-    const { isChecked } = this.state;
-
-    return (
-      <Container isChecked={isChecked} onClick={this.handleClick}>
-        {isChecked ? (
+  return (
+    <Container isCompleted={isCompleted}>
+      <Content onClick={handleTodoClick}>
+        {isCompleted ? (
           <CheckBox size={24} title="Checked" />
         ) : (
           <CheckBoxOutlineBlank size={24} title="Unchecked" />
         )}
-        <Text isChecked={isChecked}>{text}</Text>
-        <Close size={24} title="Remove" onClick={this.onDeleteClick} />
-      </Container>
-    );
-  }
-}
+        <Text isCompleted={isCompleted}>{text}</Text>
+      </Content>
+      <Close size={24} title="Remove" onClick={handleRemoveClick} />
+    </Container>
+  );
+};
 
 export default TodoItem;
