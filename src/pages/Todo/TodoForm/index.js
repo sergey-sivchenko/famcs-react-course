@@ -1,11 +1,12 @@
 import { useState } from "react";
-
-import { addTodo } from "storage-requests/todos";
+import { useDispatch } from "react-redux";
 
 import { AddButton, Container, Input } from "./styled";
+import { addTodo } from "../../../store/todo";
 
 const TodoForm = ({ isTodosLoading, requestTodos }) => {
   const [text, setText] = useState("");
+  const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
     setText(event.target.value);
@@ -13,9 +14,8 @@ const TodoForm = ({ isTodosLoading, requestTodos }) => {
 
   const handleAddClick = async () => {
     if (text) {
-      await addTodo(text);
+      dispatch(addTodo({ id: `${Date.now()}`, text, isCompleted: false }));
 
-      requestTodos();
       setText("");
     }
   };
