@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
@@ -8,6 +9,7 @@ import { getTodos } from "../../store/todo";
 
 const Todo = () => {
   const todos = useSelector(getTodos);
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -17,6 +19,13 @@ const Todo = () => {
         <TodoItem key={todo.id} id={todo.id} />
       ))}
       <TodoForm isTodosLoading={false} />
+      <button
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        Go back
+      </button>
     </Container>
   );
 };
